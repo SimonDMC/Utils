@@ -3,10 +3,7 @@ package com.simondmc.utils;
 import com.simondmc.utils.command.*;
 import com.simondmc.utils.command.template.GeneralCommand;
 import com.simondmc.utils.command.template.SuperCommand;
-import com.simondmc.utils.listener.KeepInventoryListener;
-import com.simondmc.utils.listener.LockHungerListener;
-import com.simondmc.utils.listener.NaturalRegenListener;
-import com.simondmc.utils.listener.PreventDeathListener;
+import com.simondmc.utils.listener.*;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -39,6 +36,7 @@ public final class Utils extends JavaPlugin {
     }
 
     void populateCommands() {
+        /* ONE-TIME COMMANDS */
         commands.add(new UnbreakableCommand());
         commands.add(new CountCommand());
         commands.add(new HealthCommand());
@@ -48,11 +46,13 @@ public final class Utils extends JavaPlugin {
         commands.add(new LoopCommand());
         commands.add(new DelayCommand());
         commands.add(new SimulateCommand());
+        commands.add(new RenameCommand());
+
+        /* TOGGLE COMMANDS */
         commands.add(new PreventDeathCommand());
         commands.add(new KeepInventoryCommand());
         commands.add(new NaturalRegenCommand());
         commands.add(new LockHungerCommand());
-        commands.add(new RenameCommand());
         commands.add(new LockHealthCommand());
     }
 
@@ -60,9 +60,9 @@ public final class Utils extends JavaPlugin {
         return new Listener[]{
                 new PreventDeathListener(),
                 new KeepInventoryListener(),
-                new KeepInventoryListener(),
                 new NaturalRegenListener(),
-                new LockHungerListener()
+                new LockHungerListener(),
+                new LockHealthListener()
         };
     }
 }

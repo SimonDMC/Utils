@@ -9,7 +9,7 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 public class LockHungerListener implements Listener {
 
     @EventHandler
-    public void onDeath(FoodLevelChangeEvent e) {
+    public void onFoodChange(FoodLevelChangeEvent e) {
         if (!(e.getEntity() instanceof Player)) return;
         if (!Config.containsString("lockhunger", e.getEntity().getUniqueId().toString())) return;
         e.setCancelled(true);

@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 public class GeneralCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         for (SuperCommand cmd : Utils.commands) {
+            // perform necessary checks and pass onto the command
             if (!label.equalsIgnoreCase(cmd.getLabel()) && !label.equalsIgnoreCase(Utils.plugin.getName() + ":" + cmd.getLabel()))
                 continue;
             if (!(sender instanceof Player)) {
@@ -31,6 +32,7 @@ public class GeneralCommand implements CommandExecutor {
             Player player = (Player) sender;
             cmd.runCommand(player, args);
 
+            // if the command is a toggle command, pass to ToggleCommand
             if (cmd instanceof IToggleCommand) {
                 IToggleCommand toggleCommand = (IToggleCommand) cmd;
                 new ToggleCommand(

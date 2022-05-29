@@ -9,7 +9,7 @@ import org.bukkit.event.entity.EntityRegainHealthEvent;
 public class NaturalRegenListener implements Listener {
 
     @EventHandler
-    public void onDeath(EntityRegainHealthEvent e) {
+    public void onRegen(EntityRegainHealthEvent e) {
         if (!(e.getEntity() instanceof Player)) return;
         if (!Config.containsString("naturalregen", e.getEntity().getUniqueId().toString())) return;
         if (e.getRegainReason() == EntityRegainHealthEvent.RegainReason.SATIATED) {

@@ -9,7 +9,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 public class PreventDeathListener implements Listener {
 
     @EventHandler
-    public void onDeath(EntityDamageEvent e) {
+    public void onDamage(EntityDamageEvent e) {
         if (!(e.getEntity() instanceof Player)) return;
         if (!Config.containsString("preventdeath", e.getEntity().getUniqueId().toString())) return;
         Player p = (Player) e.getEntity();

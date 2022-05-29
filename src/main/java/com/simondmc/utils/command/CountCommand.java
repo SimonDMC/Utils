@@ -38,13 +38,13 @@ public class CountCommand implements SuperCommand {
         }
 
         if (!DataType.isIntegerWithinBounds(args[0], 1, 127)) {
-            p.sendMessage("§cEnter a number between 1 and 127");
+            p.sendMessage("§cEnter a number between 1 and 127.");
             return;
         }
 
         target.getInventory().getItemInMainHand().setAmount(Integer.parseInt(args[0]));
-        String amount = (Integer.parseInt(args[0]) == 1 ? "item" : "items");
-        target.sendMessage(ChatColor.GREEN + "You are now holding " + args[0] + " " + amount);
+        String plural = (Integer.parseInt(args[0]) == 1 ? "." : "s.");
+        target.sendMessage(ChatColor.GREEN + "You are now holding " + args[0] + " item" + plural);
         PlayerUtil.playSound(target, Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
     }
 }
