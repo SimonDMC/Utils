@@ -11,7 +11,7 @@ public class PreventDeathListener implements Listener {
     @EventHandler
     public void onDamage(EntityDamageEvent e) {
         if (!(e.getEntity() instanceof Player)) return;
-        if (!Config.containsString("preventdeath", e.getEntity().getUniqueId().toString())) return;
+        if (!Config.containsString("preventdeath", e.getEntity().getUniqueId().toString(), "commands")) return;
         Player p = (Player) e.getEntity();
         if (p.getHealth() - e.getDamage() > 0) return;
         e.setDamage(p.getHealth() - .1);

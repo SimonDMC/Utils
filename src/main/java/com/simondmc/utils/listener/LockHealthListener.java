@@ -12,14 +12,14 @@ public class LockHealthListener implements Listener {
     @EventHandler
     public void onDamage(EntityDamageEvent e) {
         if (!(e.getEntity() instanceof Player)) return;
-        if (!Config.containsString("lockhealth", e.getEntity().getUniqueId().toString())) return;
+        if (!Config.containsString("lockhealth", e.getEntity().getUniqueId().toString(), "commands")) return;
         e.setDamage(0);
     }
 
     @EventHandler
     public void onHeal(EntityRegainHealthEvent e) {
         if (!(e.getEntity() instanceof Player)) return;
-        if (!Config.containsString("lockhealth", e.getEntity().getUniqueId().toString())) return;
+        if (!Config.containsString("lockhealth", e.getEntity().getUniqueId().toString(), "commands")) return;
         e.setCancelled(true);
     }
 }
