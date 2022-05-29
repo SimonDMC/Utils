@@ -5,6 +5,7 @@ import com.simondmc.utils.command.template.GeneralCommand;
 import com.simondmc.utils.command.template.SuperCommand;
 import com.simondmc.utils.config.ConfigFile;
 import com.simondmc.utils.listener.*;
+import com.simondmc.utils.util.StringUtil;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -21,8 +22,10 @@ public final class Utils extends JavaPlugin {
         plugin = this;
         // registers all commands
         populateCommands();
+        // loop through label and all aliases of all commands
         for (SuperCommand cmd : commands)
-            getCommand(cmd.getLabel()).setExecutor(new GeneralCommand());
+            for (String cmdLabel : StringUtil.addToArray(cmd.getAliases(), cmd.getLabel()))
+                getCommand(cmdLabel).setExecutor(new GeneralCommand());
         // registers listeners
         for (Listener l : getAllListeners()) {
             getServer().getPluginManager().registerEvents(l, this);

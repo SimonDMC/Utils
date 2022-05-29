@@ -1,8 +1,5 @@
 package com.simondmc.utils.config;
 
-import com.simondmc.utils.Utils;
-
-import java.io.File;
 import java.util.List;
 
 public class Config {
