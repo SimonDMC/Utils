@@ -1,0 +1,24 @@
+name: Utils
+version: '${project.version}'
+main: com.simondmc.utils.Utils
+api-version: 1.13
+authors: [ SimonDMC ]
+description: placeholder
+website: simondmc.com
+
+commands:
+  unbreakable:
+  count:
+  health:
+  sethealth:
+  sethunger:
+  setmaxhealth:
+  loop:
+  delay:
+  simulate:
+  preventdeath:
+  keepinventory:
+  naturalregen:
+  lockhunger:
+  rename:
+  lockhealth:
