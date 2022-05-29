@@ -11,7 +11,7 @@ public class NaturalRegenListener implements Listener {
     @EventHandler
     public void onRegen(EntityRegainHealthEvent e) {
         if (!(e.getEntity() instanceof Player)) return;
-        if (!Config.containsString("naturalregen", e.getEntity().getUniqueId().toString())) return;
+        if (!Config.containsString("naturalregen", e.getEntity().getUniqueId().toString(), "commands")) return;
         if (e.getRegainReason() == EntityRegainHealthEvent.RegainReason.SATIATED) {
             e.setCancelled(true);
         }

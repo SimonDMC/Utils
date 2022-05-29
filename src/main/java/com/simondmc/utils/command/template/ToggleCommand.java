@@ -10,8 +10,8 @@ public class ToggleCommand {
         if (args.length > 1) secondPlayer = PlayerUtil.validateSecondPlayer(args[1], player);
         Player target = (secondPlayer == null ? player : secondPlayer);
 
-        if (Config.containsString(label, target.getUniqueId().toString())) {
-            Config.removeString(label, target.getUniqueId().toString());
+        if (Config.containsString(label, target.getUniqueId().toString(), "commands")) {
+            Config.removeString(label, target.getUniqueId().toString(), "commands");
 
             String color = (isInverted ? "§a" : "§c");
             String toggleState = (isInverted ? "ON" : "OFF");
@@ -20,7 +20,7 @@ public class ToggleCommand {
 
             player.sendMessage("§e" + toggleDisplayName + " is now " + color + "§l" + toggleState + " §efor " + target.getName());
         } else {
-            Config.addString(label, target.getUniqueId().toString());
+            Config.addString(label, target.getUniqueId().toString(), "commands");
 
             String color = (isInverted ? "§c" : "§a");
             String toggleState = (isInverted ? "OFF" : "ON");

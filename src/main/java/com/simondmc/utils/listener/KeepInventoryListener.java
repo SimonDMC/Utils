@@ -9,7 +9,7 @@ public class KeepInventoryListener implements Listener {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent e) {
-        if (!Config.containsString("keepinventory", e.getEntity().getUniqueId().toString())) return;
+        if (!Config.containsString("keepinventory", e.getEntity().getUniqueId().toString(), "commands")) return;
         e.getDrops().clear();
         e.setKeepInventory(true);
         e.setKeepLevel(true);
