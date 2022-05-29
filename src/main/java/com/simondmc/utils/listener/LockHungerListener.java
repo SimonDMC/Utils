@@ -11,7 +11,7 @@ public class LockHungerListener implements Listener {
     @EventHandler
     public void onFoodChange(FoodLevelChangeEvent e) {
         if (!(e.getEntity() instanceof Player)) return;
-        if (!Config.containsString("lockhunger", e.getEntity().getUniqueId().toString(), "commands")) return;
+        if (!Config.containsString("lockhunger", e.getEntity().getUniqueId().toString())) return;
         e.setCancelled(true);
     }
 }
