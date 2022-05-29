@@ -2,10 +2,10 @@ package com.simondmc.utils.command;
 
 import com.simondmc.utils.command.template.Permission;
 import com.simondmc.utils.command.template.SuperCommand;
-import com.simondmc.utils.command.template.ToggleCommand;
+import com.simondmc.utils.command.template.IToggleCommand;
 import org.bukkit.entity.Player;
 
-public class KeepInventoryCommand implements SuperCommand, ToggleCommand {
+public class KeepInventoryCommand implements SuperCommand, IToggleCommand {
     public String getLabel() {
         return "keepinventory";
     }

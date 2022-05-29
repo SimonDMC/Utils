@@ -2,12 +2,10 @@ package com.simondmc.utils.command;
 
 import com.simondmc.utils.command.template.Permission;
 import com.simondmc.utils.command.template.SuperCommand;
-import com.simondmc.utils.command.template.ToggleCommand;
-import com.simondmc.utils.config.Config;
-import com.simondmc.utils.util.PlayerUtil;
+import com.simondmc.utils.command.template.IToggleCommand;
 import org.bukkit.entity.Player;
 
-public class PreventDeathCommand implements SuperCommand, ToggleCommand {
+public class PreventDeathCommand implements SuperCommand, IToggleCommand {
     public String getLabel() {
         return "preventdeath";
     }

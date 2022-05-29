@@ -31,9 +31,9 @@ public class GeneralCommand implements CommandExecutor {
             Player player = (Player) sender;
             cmd.runCommand(player, args);
 
-            if (cmd instanceof ToggleCommand) {
-                ToggleCommand toggleCommand = (ToggleCommand) cmd;
-                CommandExtension.toggleCommand(
+            if (cmd instanceof IToggleCommand) {
+                IToggleCommand toggleCommand = (IToggleCommand) cmd;
+                new ToggleCommand(
                         player,
                         args,
                         cmd.getLabel(),
@@ -42,7 +42,6 @@ public class GeneralCommand implements CommandExecutor {
                         toggleCommand.saysDefaultInsteadOfOff()
                 );
             }
-
             return true;
         }
         return false;
