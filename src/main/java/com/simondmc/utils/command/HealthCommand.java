@@ -25,7 +25,10 @@ public class HealthCommand implements SuperCommand {
     public void runCommand(Player p, String[] args) {
 
         Player target = PlayerUtil.validateSecondPlayer(args[0], p);
-        if (target == null) return;
+        if (target == null) {
+            p.sendMessage("§cThat player doesn't exist!");
+            return;
+        }
 
         p.sendMessage("§a" + target.getName() + " §ehas §c" + Math.round(target.getHealth()) + " HP");
     }
