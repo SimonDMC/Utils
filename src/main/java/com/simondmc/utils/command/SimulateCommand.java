@@ -3,6 +3,7 @@ package com.simondmc.utils.command;
 import com.simondmc.utils.command.template.Permission;
 import com.simondmc.utils.command.template.SuperCommand;
 import com.simondmc.utils.util.DataType;
+import com.simondmc.utils.util.StringUtil;
 import org.bukkit.entity.Player;
 
 public class SimulateCommand implements SuperCommand {
@@ -25,7 +26,7 @@ public class SimulateCommand implements SuperCommand {
     public void runCommand(Player p, String[] args) {
 
         String message = DataType.joinStringArray(args, " ", 0);
-        message = message.replace("&", "§");
+        message = StringUtil.translateColorCode(message);
 
         p.sendMessage(message);
     }

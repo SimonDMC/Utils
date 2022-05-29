@@ -3,8 +3,8 @@ package com.simondmc.utils.command;
 import com.simondmc.utils.command.template.Permission;
 import com.simondmc.utils.command.template.SuperCommand;
 import com.simondmc.utils.util.DataType;
-import com.simondmc.utils.util.Misc;
 import com.simondmc.utils.util.PlayerUtil;
+import com.simondmc.utils.util.StringUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -31,6 +31,7 @@ public class RenameCommand implements SuperCommand {
     public void runCommand(Player p, String[] args) {
 
         String itemName = "§f" + DataType.joinStringArray(args, " ", 0);
+        itemName = StringUtil.translateColorCode(itemName);
 
         if (p.getInventory().getItemInMainHand().getType().equals(Material.AIR)) {
             p.sendMessage(ChatColor.RED + "You aren't holding an item!");

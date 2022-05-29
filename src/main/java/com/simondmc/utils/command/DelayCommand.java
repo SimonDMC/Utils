@@ -4,7 +4,7 @@ import com.simondmc.utils.Utils;
 import com.simondmc.utils.command.template.Permission;
 import com.simondmc.utils.command.template.SuperCommand;
 import com.simondmc.utils.util.DataType;
-import com.simondmc.utils.util.Misc;
+import com.simondmc.utils.util.StringUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -32,7 +32,7 @@ public class DelayCommand implements SuperCommand {
             return;
         }
 
-        String command = Misc.formatCommand(args, 1);
+        String command = StringUtil.formatCommand(args, 1);
 
         new BukkitRunnable() {
             @Override
