@@ -53,6 +53,7 @@ public final class Utils extends JavaPlugin {
         commands.add(new DelayCommand());
         commands.add(new SimulateCommand());
         commands.add(new RenameCommand());
+        commands.add(new SaturateCommand());
 
         /* TOGGLE COMMANDS */
         commands.add(new PreventDeathCommand());

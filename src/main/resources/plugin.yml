@@ -22,3 +22,4 @@ commands:
   lockhunger:
   rename:
   lockhealth:
+  saturate:
