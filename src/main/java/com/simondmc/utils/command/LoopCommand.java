@@ -37,7 +37,7 @@ public class LoopCommand implements SuperCommand {
             return;
         }
 
-        String command = StringUtil.formatCommand(args, 2);
+        String command = DataType.joinStringArray(args, " ", 2);
 
         for (int i = 0; i < Integer.parseInt(args[0]); i++) {
             new BukkitRunnable() {
