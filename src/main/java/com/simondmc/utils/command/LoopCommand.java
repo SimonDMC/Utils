@@ -28,12 +28,12 @@ public class LoopCommand implements SuperCommand {
     public void runCommand(Player p, String[] args) {
 
         if (!DataType.isIntegerWithinBounds(args[0], 1, Integer.MAX_VALUE)) {
-            p.sendMessage("§cEnter amount");
+            p.sendMessage("§cUsage: " + getUsage());
             return;
         }
 
         if (!DataType.isIntegerWithinBounds(args[1], 1, Integer.MAX_VALUE)) {
-            p.sendMessage("§cEnter delay");
+            p.sendMessage("§cUsage: " + getUsage());
             return;
         }
 
