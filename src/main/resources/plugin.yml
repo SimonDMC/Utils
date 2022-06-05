@@ -23,3 +23,5 @@ commands:
   rename:
   lockhealth:
   saturate:
+  savestate:
+  ss:

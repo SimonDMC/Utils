@@ -32,8 +32,10 @@ public final class Utils extends JavaPlugin {
         }
         // default config file
         this.saveDefaultConfig();
-        // custom config file
+        // saves information about toggle commands
         new ConfigFile("commands.yml");
+        // saves savestates
+        new ConfigFile("savestates.yml");
     }
 
     @Override
@@ -54,6 +56,9 @@ public final class Utils extends JavaPlugin {
         commands.add(new SimulateCommand());
         commands.add(new RenameCommand());
         commands.add(new SaturateCommand());
+
+        /* SAVESTATE COMMAND */
+        commands.add(new SavestateCommand());
 
         /* TOGGLE COMMANDS */
         commands.add(new PreventDeathCommand());

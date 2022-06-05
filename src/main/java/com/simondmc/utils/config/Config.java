@@ -28,4 +28,19 @@ public class Config {
         List<String> list = ConfigFile.get(configPath).getStringList(path);
         return list.contains(toCheck);
     }
+
+    public static void set(String path, Object toSet, String configName) {
+        String configPath = configName + ".yml";
+        ConfigFile.get(configPath).set(path, toSet);
+    }
+
+    public static Object get(String path, String configName) {
+        String configPath = configName + ".yml";
+        return ConfigFile.get(configPath).get(path);
+    }
+
+    public static void save(String configName) {
+        String configPath = configName + ".yml";
+        ConfigFile.save(configPath);
+    }
 }
