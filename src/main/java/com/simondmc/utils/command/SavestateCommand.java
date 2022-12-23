@@ -41,8 +41,8 @@ public class SavestateCommand implements SuperCommand {
             if (args.length > 1) {
                 label = args[1];
             } else {
-                p.sendMessage("§cPlease specify a savestate name.");
-                return;
+                // generate random name if none is specified
+                label  = "Savestate" + (int)(Math.random() * 10000);
             }
 
             Savestate ss = new SavestateBuilder()
@@ -53,6 +53,7 @@ public class SavestateCommand implements SuperCommand {
                     .health(p.getHealth())
                     .food(p.getFoodLevel())
                     .saturation(p.getSaturation())
+                    .gamemode(p.getGameMode())
                     .build();
 
             ss.save();
@@ -81,6 +82,10 @@ public class SavestateCommand implements SuperCommand {
         }
 
         if (args[0].equalsIgnoreCase("list")) {
+            if (Config.listFileEntries("savestates").size() == 0) {
+                p.sendMessage("§cNo savestates found.");
+                return;
+            }
             p.sendMessage("§aSavestates: §e" + Config.listFileEntries("savestates").toString().replace("[", "").replace("]", ""));
             return;
         }

@@ -1,6 +1,7 @@
 package com.simondmc.utils.savestate;
 
 import com.simondmc.utils.config.Config;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -14,8 +15,9 @@ public class Savestate {
     private final double health;
     private final int food;
     private final float saturation;
+    private final GameMode gamemode;
 
-    public Savestate(String label, Location location, Vector velocity, ItemStack[] inventory, double health, int food, float saturation) {
+    public Savestate(String label, Location location, Vector velocity, ItemStack[] inventory, double health, int food, float saturation, GameMode gamemode) {
         this.label = label;
         this.location = location;
         this.velocity = velocity;
@@ -23,6 +25,7 @@ public class Savestate {
         this.health = health;
         this.food = food;
         this.saturation = saturation;
+        this.gamemode = gamemode;
     }
 
     public void save() {
@@ -32,6 +35,7 @@ public class Savestate {
         saveValue("health", health);
         saveValue("food", food);
         saveValue("saturation", saturation);
+        saveValue("gamemode", gamemode);
         Config.save("savestates");
     }
 
@@ -42,6 +46,7 @@ public class Savestate {
         p.setHealth(health);
         p.setFoodLevel(food);
         p.setSaturation(saturation);
+        p.setGameMode(gamemode);
     }
 
     public void delete() {

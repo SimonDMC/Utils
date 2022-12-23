@@ -1,6 +1,7 @@
 package com.simondmc.utils.savestate;
 
 import com.simondmc.utils.config.Config;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
@@ -33,6 +34,7 @@ public class SavestateLoader {
             } else {
                 saturation = (float) getValue(label, "saturation");
             }
+            GameMode gamemode = (GameMode) getValue(label, "gamemode");
 
             return new Savestate(
                     label,
@@ -41,7 +43,8 @@ public class SavestateLoader {
                     inventory,
                     health,
                     food,
-                    saturation
+                    saturation,
+                    gamemode
             );
         } catch (Exception e) {
             return null;

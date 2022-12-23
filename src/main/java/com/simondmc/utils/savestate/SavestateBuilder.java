@@ -1,5 +1,6 @@
 package com.simondmc.utils.savestate;
 
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
@@ -12,13 +13,12 @@ public class SavestateBuilder {
     private double health = -1;
     private int food = -1;
     private float saturation = -1;
+    private GameMode gamemode = null;
 
     public SavestateBuilder() {}
 
     public Savestate build() {
-        // generate random name if none is specified
-        if (label.equals("")) label  = "Savestate" + (int)(Math.random() * 10000);
-        return new Savestate(label, location, velocity, inventory, health, food, saturation);
+        return new Savestate(label, location, velocity, inventory, health, food, saturation, gamemode);
     }
 
     public SavestateBuilder label(String label) {
@@ -53,6 +53,11 @@ public class SavestateBuilder {
 
     public SavestateBuilder saturation(float saturation) {
         this.saturation = saturation;
+        return this;
+    }
+
+    public SavestateBuilder gamemode(GameMode gamemode) {
+        this.gamemode = gamemode;
         return this;
     }
 }
