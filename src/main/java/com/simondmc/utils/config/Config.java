@@ -1,6 +1,7 @@
 package com.simondmc.utils.config;
 
 import java.util.List;
+import java.util.Set;
 
 public class Config {
 
@@ -37,6 +38,11 @@ public class Config {
     public static Object get(String path, String configName) {
         String configPath = configName + ".yml";
         return ConfigFile.get(configPath).get(path);
+    }
+
+    public static Set<String> listFileEntries(String configName) {
+        String configPath = configName + ".yml";
+        return ConfigFile.get(configPath).getKeys(false);
     }
 
     public static void save(String configName) {

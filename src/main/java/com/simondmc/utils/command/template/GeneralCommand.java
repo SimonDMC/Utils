@@ -7,10 +7,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class GeneralCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         for (SuperCommand cmd : Utils.commands) {
@@ -30,7 +26,10 @@ public class GeneralCommand implements CommandExecutor {
 
                 switch (cmd.getRequiredPermission()) {
                     case ADMIN:
-                        if (!sender.isOp()) continue;
+                        if (!sender.isOp()) {
+                            sender.sendMessage("§cYou don't have permission to do that.");
+                            continue;
+                        }
                         break;
                     case NONE:
                         break;

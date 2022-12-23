@@ -1,8 +1,8 @@
 package com.simondmc.utils.command;
 
+import com.simondmc.utils.command.template.IToggleCommand;
 import com.simondmc.utils.command.template.Permission;
 import com.simondmc.utils.command.template.SuperCommand;
-import com.simondmc.utils.command.template.IToggleCommand;
 import org.bukkit.entity.Player;
 
 public class NaturalRegenCommand implements SuperCommand, IToggleCommand {

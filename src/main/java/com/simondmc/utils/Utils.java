@@ -6,6 +6,7 @@ import com.simondmc.utils.command.template.SuperCommand;
 import com.simondmc.utils.config.ConfigFile;
 import com.simondmc.utils.listener.*;
 import com.simondmc.utils.util.StringUtil;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -30,6 +31,11 @@ public final class Utils extends JavaPlugin {
         for (Listener l : getAllListeners()) {
             getServer().getPluginManager().registerEvents(l, this);
         }
+        // register tab completers
+        for (SuperCommand cmd : commands)
+            if (cmd.getTabCompleter() != null)
+                for (String cmdLabel : StringUtil.addToArray(cmd.getAliases(), cmd.getLabel()))
+                    getCommand(cmdLabel).setTabCompleter(cmd.getTabCompleter());
         // default config file
         this.saveDefaultConfig();
         // saves information about toggle commands

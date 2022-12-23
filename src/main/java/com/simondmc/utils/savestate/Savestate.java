@@ -44,6 +44,11 @@ public class Savestate {
         p.setSaturation(saturation);
     }
 
+    public void delete() {
+        Config.set(label, null, "savestates");
+        Config.save("savestates");
+    }
+
     private void saveValue(String path, Object value) {
         Config.set(label + "." + path, value, "savestates");
     }
