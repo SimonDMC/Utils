@@ -36,8 +36,8 @@ public final class Utils extends JavaPlugin {
             if (cmd.getTabCompleter() != null)
                 for (String cmdLabel : StringUtil.addToArray(cmd.getAliases(), cmd.getLabel()))
                     getCommand(cmdLabel).setTabCompleter(cmd.getTabCompleter());
-        // default config file
-        this.saveDefaultConfig();
+        // saves config
+        new ConfigFile("config.yml");
         // saves information about toggle commands
         new ConfigFile("commands.yml");
         // saves savestates

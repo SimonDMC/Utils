@@ -1,6 +1,7 @@
 package com.simondmc.utils.util;
 
 import com.simondmc.utils.Utils;
+import com.simondmc.utils.config.Config;
 
 public class StringUtil {
 
@@ -11,7 +12,7 @@ public class StringUtil {
     }
 
     public static String translateColorCode(String message) {
-        char colorChar = Utils.plugin.getConfig().getString("color-char").charAt(0);
+        char colorChar = ((String) Config.get("color-char", "config")).charAt(0);
         message = message.replace(colorChar, '§');
         return message;
     }
