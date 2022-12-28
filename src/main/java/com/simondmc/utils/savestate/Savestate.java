@@ -35,7 +35,7 @@ public class Savestate {
         saveValue("health", health);
         saveValue("food", food);
         saveValue("saturation", saturation);
-        saveValue("gamemode", gamemode);
+        saveValue("gamemode", gamemode.toString());
         Config.save("savestates");
     }
 

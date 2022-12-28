@@ -37,7 +37,11 @@ public class Config {
 
     public static Object get(String path, String configName) {
         String configPath = configName + ".yml";
-        return ConfigFile.get(configPath).get(path);
+        try {
+            return ConfigFile.get(configPath).get(path);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public static Set<String> listFileEntries(String configName) {
