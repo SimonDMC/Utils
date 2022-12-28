@@ -47,6 +47,8 @@ public class Savestate {
         p.setFoodLevel(food);
         p.setSaturation(saturation);
         p.setGameMode(gamemode);
+        // make sure player doesn't take fall damage
+        p.setFallDistance(0);
     }
 
     public void delete() {
