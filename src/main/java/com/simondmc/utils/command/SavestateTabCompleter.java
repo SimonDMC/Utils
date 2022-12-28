@@ -18,7 +18,7 @@ public class SavestateTabCompleter implements TabCompleter {
             List<String> list = Arrays.asList("new", "save", "load", "list", "delete");
             List<String> arguments = new ArrayList<>(list);
             for (String arg : list) {
-                if (!arg.startsWith(args[0].toLowerCase())) {
+                if (!arg.toLowerCase().startsWith(args[0].toLowerCase())) {
                     arguments.remove(arg);
                 }
             }
@@ -29,7 +29,7 @@ public class SavestateTabCompleter implements TabCompleter {
             List<String> list = new ArrayList<>(Config.listFileEntries("savestates"));
             List<String> arguments = new ArrayList<>(list);
             for (String arg : list) {
-                if (!arg.startsWith(args[1].toLowerCase())) {
+                if (!arg.toLowerCase().startsWith(args[1].toLowerCase())) {
                     arguments.remove(arg);
                 }
             }
