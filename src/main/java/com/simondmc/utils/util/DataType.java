@@ -19,15 +19,4 @@ public class DataType {
             return false;
         }
     }
-
-    public static String joinStringArray(String[] array, String delimiter, int startAt) {
-        StringBuilder builder = new StringBuilder();
-        for (int i = startAt; i < array.length; i++) {
-            builder.append(array[i]);
-            if (i < array.length - 1) {
-                builder.append(delimiter);
-            }
-        }
-        return builder.toString();
-    }
 }

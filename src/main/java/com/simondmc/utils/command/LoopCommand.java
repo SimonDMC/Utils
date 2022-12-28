@@ -4,6 +4,7 @@ import com.simondmc.utils.Utils;
 import com.simondmc.utils.command.template.Permission;
 import com.simondmc.utils.command.template.SuperCommand;
 import com.simondmc.utils.util.DataType;
+import com.simondmc.utils.util.StringUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -36,7 +37,7 @@ public class LoopCommand implements SuperCommand {
             return;
         }
 
-        String command = DataType.joinStringArray(args, " ", 2);
+        String command = StringUtil.joinStringArray(args, " ", 2);
 
         for (int i = 0; i < Integer.parseInt(args[0]); i++) {
             new BukkitRunnable() {

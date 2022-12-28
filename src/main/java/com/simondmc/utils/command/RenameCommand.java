@@ -30,7 +30,7 @@ public class RenameCommand implements SuperCommand {
 
     public void runCommand(Player p, String[] args) {
 
-        String itemName = "§f" + DataType.joinStringArray(args, " ", 0);
+        String itemName = "§f" + StringUtil.joinStringArray(args, " ", 0);
         itemName = StringUtil.translateColorCode(itemName);
 
         if (p.getInventory().getItemInMainHand().getType().equals(Material.AIR)) {

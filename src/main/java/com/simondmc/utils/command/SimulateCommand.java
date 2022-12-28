@@ -25,7 +25,7 @@ public class SimulateCommand implements SuperCommand {
 
     public void runCommand(Player p, String[] args) {
 
-        String message = DataType.joinStringArray(args, " ", 0);
+        String message = StringUtil.joinStringArray(args, " ", 0);
         message = StringUtil.translateColorCode(message);
 
         p.sendMessage(message);

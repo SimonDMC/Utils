@@ -6,7 +6,6 @@ import com.simondmc.utils.command.template.SuperCommand;
 import com.simondmc.utils.config.ConfigFile;
 import com.simondmc.utils.listener.*;
 import com.simondmc.utils.util.StringUtil;
-import org.bukkit.command.TabCompleter;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 

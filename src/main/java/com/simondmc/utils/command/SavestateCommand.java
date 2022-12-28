@@ -6,6 +6,7 @@ import com.simondmc.utils.config.Config;
 import com.simondmc.utils.savestate.Savestate;
 import com.simondmc.utils.savestate.SavestateBuilder;
 import com.simondmc.utils.savestate.SavestateLoader;
+import com.simondmc.utils.util.StringUtil;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
@@ -39,7 +40,7 @@ public class SavestateCommand implements SuperCommand {
         if (args[0].equalsIgnoreCase("save") || args[0].equalsIgnoreCase("new")) {
             String label;
             if (args.length > 1) {
-                label = args[1];
+                label = StringUtil.joinStringArray(args, " ", 1);
             } else {
                 // generate random name if none is specified
                 label  = "Savestate" + (int)(Math.random() * 10000);
@@ -64,7 +65,7 @@ public class SavestateCommand implements SuperCommand {
         if (args[0].equalsIgnoreCase("load")) {
             String label;
             if (args.length > 1) {
-                label = args[1];
+                label = StringUtil.joinStringArray(args, " ", 1);
             } else {
                 p.sendMessage("§cPlease specify a savestate name.");
                 return;
@@ -93,7 +94,7 @@ public class SavestateCommand implements SuperCommand {
         if (args[0].equalsIgnoreCase("delete")) {
             String label;
             if (args.length > 1) {
-                label = args[1];
+                label = StringUtil.joinStringArray(args, " ", 1);
             } else {
                 p.sendMessage("§cPlease specify a savestate name.");
                 return;
