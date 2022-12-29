@@ -6,9 +6,6 @@ import com.simondmc.utils.command.template.SuperCommand;
 import org.bukkit.entity.Player;
 
 public class LockHealthCommand implements SuperCommand, IToggleCommand {
-    public int getMinimumArgs() {
-        return 0;
-    }
 
     public String getLabel() {
         return "lockhealth";
@@ -24,17 +21,5 @@ public class LockHealthCommand implements SuperCommand, IToggleCommand {
 
     public String getToggleDisplayName() {
         return "Lock health";
-    }
-
-    public Boolean isInverted() {
-        return false;
-    }
-
-    public Boolean saysDefaultInsteadOfOff() {
-        return false;
-    }
-
-    public void runCommand(Player p, String[] args) {
-
     }
 }

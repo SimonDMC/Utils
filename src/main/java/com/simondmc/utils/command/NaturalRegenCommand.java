@@ -18,10 +18,6 @@ public class NaturalRegenCommand implements SuperCommand, IToggleCommand {
         return Permission.ADMIN;
     }
 
-    public int getMinimumArgs() {
-        return 0;
-    }
-
     public String getToggleDisplayName() {
         return "Natural regeneration";
     }
@@ -32,9 +28,5 @@ public class NaturalRegenCommand implements SuperCommand, IToggleCommand {
 
     public Boolean saysDefaultInsteadOfOff() {
         return true;
-    }
-
-    public void runCommand(Player p, String[] args) {
-
     }
 }

@@ -4,7 +4,7 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 public interface SuperCommand {
-    int getMinimumArgs();
+    default int getMinimumArgs() { return 0; }
     String getLabel();
     default String[] getAliases() {
         return new String[]{};
@@ -14,5 +14,5 @@ public interface SuperCommand {
     default TabCompleter getTabCompleter() {
         return null;
     }
-    void runCommand(Player p, String[] args);
+    default void runCommand(Player p, String[] args) {}
 }

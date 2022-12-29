@@ -18,16 +18,11 @@ public class SaturateCommand implements SuperCommand {
         return Permission.ADMIN;
     }
 
-    public int getMinimumArgs() {
-        return 0;
-    }
-
     public void runCommand(Player p, String[] args) {
-        Player secondPlayer = null;
-        if (args.length > 0) secondPlayer = PlayerUtil.validateSecondPlayer(args[0], p);
-        Player target = (secondPlayer == null ? p : secondPlayer);
+        if (args.length > 0) p = PlayerUtil.validateCommandTarget(args[0], p);
+        if (p == null) return;
 
-        target.setFoodLevel(20);
-        target.setSaturation(20);
+        p.setFoodLevel(20);
+        p.setSaturation(20);
     }
 }

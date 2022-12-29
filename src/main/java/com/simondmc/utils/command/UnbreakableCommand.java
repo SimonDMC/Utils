@@ -22,30 +22,21 @@ public class UnbreakableCommand implements SuperCommand {
         return Permission.ADMIN;
     }
 
-    public int getMinimumArgs() {
-        return 0;
-    }
-
     public void runCommand(Player p, String[] args) {
+        if (args.length > 0) p = PlayerUtil.validateCommandTarget(args[0], p);
+        if (p == null) return;
 
-        Player secondPlayer = null;
-        if (args.length > 0) secondPlayer = PlayerUtil.validateSecondPlayer(args[0], p);
-        Player target = (secondPlayer == null ? p : secondPlayer);
+        if (!PlayerUtil.isHoldingItem(p)) return;
 
-        if (target.getInventory().getItemInMainHand().getType().equals(Material.AIR)) {
-            p.sendMessage(ChatColor.RED + "You aren't holding an item!");
-            return;
-        }
-
-        ItemMeta m = target.getInventory().getItemInMainHand().getItemMeta();
+        ItemMeta m = p.getInventory().getItemInMainHand().getItemMeta();
         if (m.isUnbreakable()) {
             m.setUnbreakable(false);
-            target.sendMessage(ChatColor.GREEN + "Your item is now breakable!");
+            p.sendMessage(ChatColor.GREEN + "Your item is now breakable!");
         } else {
             m.setUnbreakable(true);
-            target.sendMessage(ChatColor.GREEN + "Your item is now unbreakable!");
+            p.sendMessage(ChatColor.GREEN + "Your item is now unbreakable!");
         }
-        PlayerUtil.playSound(target, Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
-        target.getInventory().getItemInMainHand().setItemMeta(m);
+        PlayerUtil.playSound(p, Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
+        p.getInventory().getItemInMainHand().setItemMeta(m);
     }
 }

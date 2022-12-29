@@ -2,6 +2,6 @@ package com.simondmc.utils.command.template;
 
 public interface IToggleCommand {
     String getToggleDisplayName();
-    Boolean isInverted();
-    Boolean saysDefaultInsteadOfOff();
+    default Boolean isInverted() { return false; }
+    default Boolean saysDefaultInsteadOfOff() { return false; }
 }

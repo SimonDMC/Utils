@@ -27,24 +27,19 @@ public class CountCommand implements SuperCommand {
     }
 
     public void runCommand(Player p, String[] args) {
+        if (args.length > 1) p = PlayerUtil.validateCommandTarget(args[1], p);
+        if (p == null) return;
 
-        Player secondPlayer = null;
-        if (args.length > 1) secondPlayer = PlayerUtil.validateSecondPlayer(args[1], p);
-        Player target = (secondPlayer == null ? p : secondPlayer);
-
-        if (target.getInventory().getItemInMainHand().getType().equals(Material.AIR)) {
-            p.sendMessage(ChatColor.RED + "You aren't holding an item!");
-            return;
-        }
+        if (!PlayerUtil.isHoldingItem(p)) return;
 
         if (!DataType.isIntegerWithinBounds(args[0], 1, 127)) {
             p.sendMessage("§cEnter a number between 1 and 127.");
             return;
         }
 
-        target.getInventory().getItemInMainHand().setAmount(Integer.parseInt(args[0]));
+        p.getInventory().getItemInMainHand().setAmount(Integer.parseInt(args[0]));
         String plural = (Integer.parseInt(args[0]) == 1 ? "." : "s.");
-        target.sendMessage(ChatColor.GREEN + "You are now holding " + args[0] + " item" + plural);
-        PlayerUtil.playSound(target, Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
+        p.sendMessage(ChatColor.GREEN + "You are now holding " + args[0] + " item" + plural);
+        PlayerUtil.playSound(p, Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
     }
 }

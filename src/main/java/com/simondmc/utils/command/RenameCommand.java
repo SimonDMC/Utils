@@ -29,14 +29,10 @@ public class RenameCommand implements SuperCommand {
     }
 
     public void runCommand(Player p, String[] args) {
-
         String itemName = "§f" + StringUtil.joinStringArray(args, " ", 0);
         itemName = StringUtil.translateColorCode(itemName);
 
-        if (p.getInventory().getItemInMainHand().getType().equals(Material.AIR)) {
-            p.sendMessage(ChatColor.RED + "You aren't holding an item!");
-            return;
-        }
+        if (!PlayerUtil.isHoldingItem(p)) return;
 
         ItemMeta m = p.getInventory().getItemInMainHand().getItemMeta();
         m.setDisplayName(itemName);

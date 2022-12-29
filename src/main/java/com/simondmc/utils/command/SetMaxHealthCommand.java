@@ -25,17 +25,15 @@ public class SetMaxHealthCommand implements SuperCommand {
     }
 
     public void runCommand(Player p, String[] args) {
-
-        Player secondPlayer = null;
-        if (args.length > 1) secondPlayer = PlayerUtil.validateSecondPlayer(args[1], p);
-        Player target = (secondPlayer == null ? p : secondPlayer);
+        if (args.length > 1) p = PlayerUtil.validateCommandTarget(args[1], p);
+        if (p == null) return;
 
         if (!DataType.isIntegerWithinBounds(args[0], 1, Integer.MAX_VALUE)) {
             p.sendMessage("§cEnter a number");
             return;
         }
 
-        target.setMaxHealth(Integer.parseInt(args[0]));
-        PlayerUtil.playSound(target, Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
+        p.setMaxHealth(Integer.parseInt(args[0]));
+        PlayerUtil.playSound(p, Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
     }
 }

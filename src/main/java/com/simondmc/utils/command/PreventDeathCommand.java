@@ -18,23 +18,7 @@ public class PreventDeathCommand implements SuperCommand, IToggleCommand {
         return Permission.ADMIN;
     }
 
-    public int getMinimumArgs() {
-        return 0;
-    }
-
     public String getToggleDisplayName() {
         return "Prevent death";
-    }
-
-    public Boolean isInverted() {
-        return false;
-    }
-
-    public Boolean saysDefaultInsteadOfOff() {
-        return false;
-    }
-
-    public void runCommand(Player p, String[] args) {
-
     }
 }

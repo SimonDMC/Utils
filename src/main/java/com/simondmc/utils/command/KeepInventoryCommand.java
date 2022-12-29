@@ -18,23 +18,11 @@ public class KeepInventoryCommand implements SuperCommand, IToggleCommand {
         return Permission.ADMIN;
     }
 
-    public int getMinimumArgs() {
-        return 0;
-    }
-
     public String getToggleDisplayName() {
         return "Keep inventory";
     }
 
-    public Boolean isInverted() {
-        return false;
-    }
-
     public Boolean saysDefaultInsteadOfOff() {
         return true;
-    }
-
-    public void runCommand(Player p, String[] args) {
-
     }
 }
