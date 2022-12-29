@@ -33,7 +33,7 @@ public class SavestateOverwrite {
     }
 
     public boolean isActive() {
-        int overwriteExpire = (int) Config.getOrDefault("overwrite-expire", 10000, "savestates");
+        int overwriteExpire = (int) Config.getOrDefault("overwrite-expire", 10000, "config");
         // keep in external list to prevent CurrentModificationException
         List<SavestateOverwrite> toRemove = new ArrayList<>();
         for (SavestateOverwrite overwrite : activeOverwrites) {
