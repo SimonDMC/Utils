@@ -6,6 +6,7 @@ import com.simondmc.utils.config.Config;
 import com.simondmc.utils.savestate.Savestate;
 import com.simondmc.utils.savestate.SavestateBuilder;
 import com.simondmc.utils.savestate.SavestateLoader;
+import com.simondmc.utils.savestate.SavestateOverwrite;
 import com.simondmc.utils.util.StringUtil;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
@@ -46,6 +47,21 @@ public class SavestateCommand implements SuperCommand {
                 label  = "Savestate" + (int)(Math.random() * 10000);
             }
 
+            boolean isOverwrite = false;
+
+            // check if another savestate with the same name already exists
+            if (Config.listFileEntries("savestates").contains(label)) {
+                SavestateOverwrite overwrite = new SavestateOverwrite(label, p);
+                if (overwrite.isActive()) {
+                    overwrite.remove();
+                    isOverwrite = true;
+                } else {
+                    p.sendMessage("§cA savestate with the name §e" + label + "§c already exists. Run this command again to overwrite it.");
+                    overwrite.add();
+                    return;
+                }
+            }
+
             Savestate ss = new SavestateBuilder()
                     .label(label)
                     .location(p.getLocation())
@@ -58,7 +74,7 @@ public class SavestateCommand implements SuperCommand {
                     .build();
 
             ss.save();
-            p.sendMessage("§aSaved state §e" + label + "§a.");
+            p.sendMessage(String.format("§a%s state §e%s§a.", isOverwrite ? "Overwrote" : "Saved", label));
             return;
         }
 

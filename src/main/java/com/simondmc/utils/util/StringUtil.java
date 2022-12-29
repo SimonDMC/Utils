@@ -24,8 +24,9 @@ public class StringUtil {
      * @return The message with the color delimiter replaced.
      */
     public static String translateColorCode(String message) {
-        char colorChar = ((String) Config.get("color-char", "config")).charAt(0);
-        message = message.replace(colorChar, '§');
+        Object colorCharObj = Config.get("color-char", "config");
+        String colorChar = colorCharObj == null ? "&" : (String) colorCharObj;
+        message = message.replace(colorChar, "§");
         return message;
     }
 

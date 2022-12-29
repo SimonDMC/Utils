@@ -6,3 +6,6 @@
 
 # Character to use for translating color codes (default: '&')
 color-char: '&'
+
+# Delay before an overwrite prompt expires in milliseconds (default: 10 seconds = 10000 ms)
+overwrite-expire: 10000

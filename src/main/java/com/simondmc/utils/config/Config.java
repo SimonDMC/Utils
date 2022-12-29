@@ -5,7 +5,12 @@ import java.util.Set;
 
 public class Config {
 
-    // add string to string list in config
+    /**
+     * Add a string to a string list in a config file.
+     * @param path The path to the string list.
+     * @param toAdd The string to add.
+     * @param configName The name of the config file.
+     */
     public static void addString(String path, String toAdd, String configName) {
         String configPath = configName + ".yml";
         List<String> list = ConfigFile.get(configPath).getStringList(path);
@@ -14,7 +19,12 @@ public class Config {
         ConfigFile.save(configPath);
     }
 
-    // remove string from string list in config
+    /**
+     * Remove a string from a string list in a config file.
+     * @param path The path to the string list.
+     * @param toRemove The string to remove.
+     * @param configName The name of the config file.
+     */
     public static void removeString(String path, String toRemove, String configName) {
         String configPath = configName + ".yml";
         List<String> list = ConfigFile.get(configPath).getStringList(path);
@@ -23,18 +33,36 @@ public class Config {
         ConfigFile.save(configPath);
     }
 
-    // check if string is in string list in config
+    /**
+     * Check if a string is in a string list in a config file.
+     * @param path The path to the string list.
+     * @param toCheck The string to check.
+     * @param configName The name of the config file.
+     * @return Whether the string is in the list.
+     */
     public static boolean containsString(String path, String toCheck, String configName) {
         String configPath = configName + ".yml";
         List<String> list = ConfigFile.get(configPath).getStringList(path);
         return list.contains(toCheck);
     }
 
+    /**
+     * Set a value in a config file.
+     * @param path The path to the value.
+     * @param toSet The value to set.
+     * @param configName The name of the config file.
+     */
     public static void set(String path, Object toSet, String configName) {
         String configPath = configName + ".yml";
         ConfigFile.get(configPath).set(path, toSet);
     }
 
+    /**
+     * Get a value from a config file.
+     * @param path The path to the value.
+     * @param configName The name of the config file.
+     * @return The value.
+     */
     public static Object get(String path, String configName) {
         String configPath = configName + ".yml";
         try {
@@ -44,11 +72,37 @@ public class Config {
         }
     }
 
+    /**
+     * Get a value from a config file, or return a default value if the value is null / doesn't exist.
+     * @param path The path to the value.
+     * @param defaultValue The default value to return if the value is null / doesn't exist.
+     * @param configName The name of the config file.
+     * @return The value, or the default value if the value is null / doesn't exist.
+     */
+    public static Object getOrDefault(String path, Object defaultValue, String configName) {
+        String configPath = configName + ".yml";
+        try {
+            Object value = ConfigFile.get(configPath).get(path);
+            return value == null ? defaultValue : value;
+        } catch (Exception e) {
+            return defaultValue;
+        }
+    }
+
+    /**
+     * List all values in the root of a config file.
+     * @param configName The name of the config file.
+     * @return A set of all values in the root.
+     */
     public static Set<String> listFileEntries(String configName) {
         String configPath = configName + ".yml";
         return ConfigFile.get(configPath).getKeys(false);
     }
 
+    /**
+     * Save a config file.
+     * @param configName The name of the config file.
+     */
     public static void save(String configName) {
         String configPath = configName + ".yml";
         ConfigFile.save(configPath);
