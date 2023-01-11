@@ -7,6 +7,10 @@ import com.simondmc.utils.util.DataType;
 import com.simondmc.utils.util.StringUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoopCommand implements SuperCommand {
     public String getLabel() {
@@ -25,6 +29,8 @@ public class LoopCommand implements SuperCommand {
         return 3;
     }
 
+    public static List<BukkitTask> loops = new ArrayList<>();
+
     public void runCommand(Player p, String[] args) {
 
         if (!DataType.isIntegerWithinBounds(args[0], 1, Integer.MAX_VALUE)) {
@@ -37,15 +43,15 @@ public class LoopCommand implements SuperCommand {
             return;
         }
 
-        String command = StringUtil.joinStringArray(args, " ", 2);
+        String command = StringUtil.formatCommand(args, 2);
 
         for (int i = 0; i < Integer.parseInt(args[0]); i++) {
-            new BukkitRunnable() {
+            loops.add(new BukkitRunnable() {
                 @Override
                 public void run() {
                     p.chat(command);
                 }
-            }.runTaskLater(Utils.plugin, i * Integer.parseInt(args[1]));
+            }.runTaskLater(Utils.plugin, (long) i * Integer.parseInt(args[1])));
         }
     }
 }

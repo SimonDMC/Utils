@@ -32,7 +32,7 @@ public class DelayCommand implements SuperCommand {
             return;
         }
 
-        String command = StringUtil.joinStringArray(args, " ", 1);
+        String command = StringUtil.formatCommand(args, 1);
 
         new BukkitRunnable() {
             @Override

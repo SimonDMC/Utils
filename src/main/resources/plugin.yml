@@ -25,3 +25,4 @@ commands:
   saturate:
   savestate:
   ss:
+  clearloops:
